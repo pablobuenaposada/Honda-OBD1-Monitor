@@ -1,0 +1,10 @@
+phi_big_font	KEYWORD1
+invert_big_font	KEYWORD2
+lcd_clear	KEYWORD2
+big_msg_lcd	KEYWORD2
+render_big_number	KEYWORD2
+render_big_msg	KEYWORD2
+render_big_char	KEYWORD2
+render_big_char_bot	KEYWORD2
+render_big_char_top	KEYWORD2
+init_big_font	KEYWORD2
