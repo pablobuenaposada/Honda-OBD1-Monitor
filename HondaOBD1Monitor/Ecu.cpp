@@ -19,7 +19,7 @@
 #define INJLOW_CROME14  0x17
 #define INJHIGH_CROME14 0x18
 #define KNOCK_CROME14   0x1A
-#define BATT_CROME14    0x22
+#define BATT_CROME14    0x1F
 
 #define injsize 240
 
