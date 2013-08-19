@@ -31,8 +31,18 @@ void setupLCD(){
   lcd.backlight();
 }
 
+void initialScreen(){
+  lcd.setCursor(0,1);
+  lcd.print("  BEYRO MOTORSPORT");
+  lcd.setCursor(0,2);
+  lcd.print("      CIVIC EK");
+}
+
 void setup() {
   setupLCD();
+  initialScreen();
+  delay(3000);
+  lcd.clear();  
 }
 
 //for VDO 323-057
@@ -49,14 +59,14 @@ void printOil(int row, int temp, float pressure){
   values.concat(" PSI ");
   if (temp < 0){
     if(temp > -10){
-      values.concat("0");
+      values.concat(" ");
     }
   }
   else if(temp < 10){
-    values.concat("00");
+    values.concat("  ");
   }
   else if(temp < 100){
-    values.concat("0");
+    values.concat(" ");
   }  
   values.concat(temp);
   values.concat((char)223);
@@ -67,7 +77,7 @@ void printOil(int row, int temp, float pressure){
 
 void printTurbo(int row, float pressure){
   String values="";
-  values.concat("TRB: ");
+  values.concat("BST: ");
   char stringPressure[10];
   dtostrf(pressure,1,2,stringPressure);
   values.concat(stringPressure);
@@ -78,7 +88,7 @@ void printTurbo(int row, float pressure){
 
 void printWater(int row, int temp){
   String values="";
-  values.concat("WTR: ");
+  values.concat("H2O: ");
   values.concat(temp);
   values.concat((char)223);
   values.concat("C");  
@@ -86,13 +96,14 @@ void printWater(int row, int temp){
   lcd.print(values);
 }
 
+
 float getSensorVoltage(int sensor){
   return (analogRead(sensor)/1024.000)*5;
 }
 
 void loop() {
   printOil(0,voltage2temp(getSensorVoltage(SENSOR1)),getSensorVoltage(SENSOR2));      
-  printTurbo(1,voltage2temp(getSensorVoltage(SENSOR3)));
+  printTurbo(1,getSensorVoltage(SENSOR3));
   printWater(2,voltage2temp(getSensorVoltage(SENSOR4)));
   delay(250);
 }
