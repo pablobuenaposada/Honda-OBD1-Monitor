@@ -47,7 +47,9 @@ void setup() {
 
 //for VDO 323-057
 float voltage2temp(float voltage){
-  return -0.06024895026*pow(voltage,10) + 1.437376995*pow(voltage,9) - 14.55709293*pow(voltage,8) + 81.34361005*pow(voltage,7) - 272.1995931*pow(voltage,6) + 549.7014694*pow(voltage,5) - 623.0142803*pow(voltage,4) + 270.4616394*pow(voltage,3) + 180.330987*pow(voltage,2) - 306.148068*voltage + 240.9014273;  
+  
+  return -0.05007201037*pow(voltage,10) + 1.171260711*pow(voltage,9) - 11.55461723*pow(voltage,8) + 62.20510364*pow(voltage,7) - 196.4010868*pow(voltage,6) + 356.468504*pow(voltage,5) - 305.3996258*pow(voltage,4) - 57.02805328*pow(voltage,3) + 378.5236931*pow(voltage,2) - 366.4523339*voltage + 243.2379721;
+
 }
 
 void printOil(int row, int temp, float pressure){
