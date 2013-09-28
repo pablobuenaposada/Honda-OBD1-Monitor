@@ -490,7 +490,7 @@ void bigEct(){
     ectString = "00"+String(ect);
   }
   else if (ect < 100){
-    ectString = "00"+String(ect);
+    ectString = "0"+String(ect);
   }  
   else{
     ectString = String(ect);
@@ -513,7 +513,7 @@ void bigVss(){
     vssString = "00"+String(vss);
   }
   else if (vss < 100){
-    vssString = "00"+String(vss);
+    vssString = "0"+String(vss);
   }  
   else{
     vssString = String(vss);
