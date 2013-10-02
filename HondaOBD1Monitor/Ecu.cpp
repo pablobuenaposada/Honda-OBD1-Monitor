@@ -45,7 +45,7 @@ unsigned int Ecu::getRpm(){
   return 1851562/((rpmHighRaw * 256) + rpmLowRaw);  
 }
 
-float Ecu:: getBattery(){
+float Ecu::getBattery(){
   float batteryRaw = readEcu(BATT_CROME14);
   return (26.0 * batteryRaw) / 270.0;
 }
@@ -56,7 +56,7 @@ float Ecu::calcTempInCelsius(float raw){
   return ((raw - 32)*5)/9;
 }
 
-int Ecu:: getIat(){
+int Ecu::getIat(){
   float iatRaw = readEcu(IAT_CROME14);
   return calcTempInCelsius(iatRaw);                  
 }
@@ -80,7 +80,7 @@ int Ecu::getO2(){
     
 int Ecu::getVss(){
   float vssRaw = readEcu(VSS_CROME14);
-  return (vssRaw*0.4)*1.609344;
+  return (vssRaw*0.4);
 }
 
 float Ecu::getMap(){ //in mBar
