@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <avr/pgmspace.h>
 #include <phi_big_font.h>
+#include <EEPROM.h>
 
 #define REDLITE 9
 #define GREENLITE 10
@@ -336,7 +337,7 @@ int readButton(){
   buttonReading = analogRead(A1);  
   if (buttonReading <= 1) return 3;
   else if (buttonReading >= 1020) return 4;
-  else if (buttonReading >= 350 && buttonReading <= 500) return 5;  
+  else if (buttonReading >= 350 && buttonReading <= 700) return 5;  
   else return -1;
 }
 
@@ -572,7 +573,7 @@ void setup() {
   lcd.setCursor(1,1);
   lcd.print("HONDA OBD1 MONITOR");
   lcd.setCursor(0,3);
-  lcd.print("v1.0   by DiSCLAiMER");
+  lcd.print("v1.0     by Pablo B");
   backLightDemo();
   //initialBeep();
   backLightDemo();
@@ -584,6 +585,7 @@ void setup() {
   attachInterrupt(1, button2ISR, FALLING);
   pinMode(A1,INPUT);  
   lcd.clear();
+  color = EEPROM.read(1);  
   setBackLight(rgb[color*3],rgb[color*3+1],rgb[color*3+2]);  
 }
 
@@ -603,6 +605,7 @@ void loop() {
       }
       else if (button == 5){
         if (color != auxColor) color=auxColor;
+        EEPROM.write(1,color);
         settingsSaved();
           
       }

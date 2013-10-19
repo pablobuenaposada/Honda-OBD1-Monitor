@@ -80,7 +80,7 @@ int Ecu::getO2(){
     
 int Ecu::getVss(){
   float vssRaw = readEcu(VSS_CROME14);
-  return (vssRaw*0.4);
+  return vssRaw;
 }
 
 float Ecu::getMap(){ //in mBar
